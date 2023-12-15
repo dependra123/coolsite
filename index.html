@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @keyframes moveAndChangeColor {
+      0% {
+       
+        background-color: red;
+        color: white;
+      }
+      25% {
+        background-color: blue;
+        color: yellow;
+      }
+      50% {
+     
+        background-color: green;
+        color: black;
+      }
+      75% {
+
+        background-color: purple;
+        color: orange;
+      }
+      100% {
+     
+        background-color: red;
+        color: white;
+      }
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      font-size: 24px;
+      color: white;
+      background-color: black;
+      padding: 10px;
+      white-space: nowrap;
+      animation: moveAndChangeColor 8s infinite;
+    }
+  </style>
+  <title>DVD Logo Animation</title>
+</head>
+<body>
+  <h1 id="movingText"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" id="movingText"><button  >Cool website</button></a>
+  </h1>
+
+  <script>
+    const h1 = document.getElementById('movingText');
+    const speed = 2; // Adjust the speed as needed
+    let xDirection = 1;
+    let yDirection = 1;
+
+    function moveH1() {
+      const rect = h1.getBoundingClientRect();
+
+      if (rect.right >= window.innerWidth || rect.left <= 0) {
+        xDirection *= -1;
+      }
+
+      if (rect.bottom >= window.innerHeight || rect.top <= 0) {
+        yDirection *= -1;
+      }
+
+      h1.style.left = `${rect.left + speed * xDirection}px`;
+      h1.style.top = `${rect.top + speed * yDirection}px`;
+
+      requestAnimationFrame(moveH1);
+    }
+
+    moveH1();
+  </script>
+</body>
+</html>
